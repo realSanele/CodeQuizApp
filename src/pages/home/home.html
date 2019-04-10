@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-navbar color="background">
+    <ion-title text-center>
+        CodeQuiz
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center> 
+    <div *ngIf="screen1" class="screen">
+            <div class="header">
+                    <h1 *ngIf="results == false">Welcome to <span>CodeQuiz</span> </h1><br><br>
+                    <img src="assets/imgs/logo.jpg" width="50%">
+                    
+            </div>
+            <br><br><br><br><br>
+            <button ion-button color="white" style="color:#F4D03F" icon-start (click)="start()"> <ion-icon name="md-arrow-round-forward"></ion-icon> START QUIZ</button>
+    </div>
+    <div *ngIf="screen2" class="main1">
+            <div *ngIf="results == false">
+                <img src="assets/imgs/screen2.jpg">
+                    <br><br><br><br>
+                    <div class="info"> 
+                        <h4>Multiple choice <span>OR</span> True or False</h4>
+                    </div>
+                    <div *ngFor="let question of questions">
+                        <div class="question">
+                            
+                            <h6>Question {{question.questionId}}</h6>    
+                            </div>
+                            <div class="answer">
+                            <h6>{{question.question}} </h6>
+                            <ion-list radio-group [(ngModel)]="question.model">
+                                <ion-item>
+                                  <ion-label><h6>{{question.answers1}}</h6></ion-label>
+                                  <ion-radio name="answer1"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                  <ion-label><h6>{{question.answers2}}</h6></ion-label>
+                                  <ion-radio name="answer2"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label><h6>{{question.answers3}}</h6></ion-label>
+                                    <ion-radio name="answer3"></ion-radio>
+                                </ion-item>
+                              </ion-list>   
+                            </div>
+                            <div class="footer">
+                            <h6> </h6>
+                            </div>
+                    </div>
+                    <br><br>
+                    <div class="btn">
+                            <button ion-button color="white" style="color:#F4D03F" (click)="next()">NEXT</button>
+                    </div>
+                    
+                    <!-- <div class="submit">
+                        <button ion-button color="background-light" (click)="submit()">Submit</button>
+                    </div> -->
+                </div>
+    </div>
+    <div *ngIf="screen3" class="main2">
+            <div *ngIf="results == false">
+                <img src="assets/imgs/screen3.webp">
+                    <br><br><br><br>
+                    <div class="info"> 
+                        <h4>Multiple choice <span>OR</span> True or False</h4>
+                    </div>
+                    <div *ngFor="let question1 of questions1">
+                        <div class="question1">
+                            
+                            <h6>Question {{question1.questionId}}</h6>    
+                            </div>
+                            <div class="answer">
+                            <h6>{{question1.question}} </h6>
+                            <ion-list radio-group [(ngModel)]="question1.model">
+                                <ion-item>
+                                  <ion-label><h6>{{question1.answers1}}</h6></ion-label>
+                                  <ion-radio name="answer1"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                  <ion-label><h6>{{question1.answers2}}</h6></ion-label>
+                                  <ion-radio name="answer2"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label><h6>{{question1.answers3}}</h6></ion-label>
+                                    <ion-radio name="answer3"></ion-radio>
+                                </ion-item>
+                              </ion-list>   
+                            </div>
+                            <div class="footer1">
+                            <h6> </h6>
+                            </div>
+                    </div>
+                    <br><br>
+                    <div class="btn">
+                            <button ion-button color="white" style="color:#F4D03F" (click)="next1()">NEXT</button>
+                    </div>
+                    
+                    <!-- <div class="submit">
+                        <button ion-button color="background-light" (click)="submit()">Submit</button>
+                    </div> -->
+                </div>
+    </div>
+    <div *ngIf="screen4" class="main3">
+            <div *ngIf="results == false">
+                <img src="assets/imgs/screen4.jpg">
+                    <br><br><br><br>
+                    <div class="info"> 
+                        <h4>Multiple choice <span>OR</span> True or False</h4>
+                    </div>
+                    <div *ngFor="let question2 of questions2">
+                        <div class="question2">
+                            
+                            <h6>Question {{question2.questionId}}</h6>    
+                            </div>
+                            <div class="answer">
+                            <h6>{{question2.question}} </h6>
+                            <ion-list radio-group [(ngModel)]="question2.model">
+                                <ion-item>
+                                  <ion-label><h6>{{question2.answers1}}</h6></ion-label>
+                                  <ion-radio name="answer1"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                  <ion-label><h6>{{question2.answers2}}</h6></ion-label>
+                                  <ion-radio name="answer2"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label><h6>{{question2.answers3}}</h6></ion-label>
+                                    <ion-radio name="answer3"></ion-radio>
+                                </ion-item>
+                              </ion-list>   
+                            </div>
+                            <div class="footer2">
+                            <h6> </h6>
+                            </div>
+                    </div>
+                    <br><br>
+                    <div class="submit">
+                        <button ion-button color="white" style="color:#F4D03F" (click)="submit()">SUBMIT</button>
+                    </div>
+                </div>
+    </div>
+<div class="R" *ngIf="results == true">
+    <img src="assets/imgs/R.jpg" alt="">
+    <div class="info">
+      <h4>Results</h4>
+    </div>
+    <div class="Results">
+        <h6 class="h6">The overall score <span>{{final.toFixed(0)}}%</span></h6>
+        <h5>Question 1  [ <a style="color: white">Decimal</a> ]</h5>
+        <h5>Question 2  [ <a style="color: white">VHDL</a> ]</h5>
+        <h5>Question 3  [ <a style="color: white">Ionic is used for hybrid apps</a> ]</h5>
+        <h5>Question 4  [ <a style="color: white">8 bits</a> ]</h5>
+        <h5>Question 5  [ <a style="color: white">;</a> ]</h5>
+
+        <h5>Question 6  [ <a style="color: #F4D03F">Mario</a> ]</h5>
+        <h5>Question 7  [ <a style="color: #F4D03F">Oddessy</a> ]</h5>
+        <h5>Question 8  [ <a style="color: #F4D03F">Contra</a> ]</h5>
+        <h5>Question 9  [ <a style="color: #F4D03F">NVDIA GTX 3GH</a> ]</h5>
+        <h5>Question 10  [ <a style="color: #F4D03F">Nitendo Entertainment System</a> ]</h5>
+
+        <h5>Question 11  [ <a style="color: #CB4335">Spanish artist</a> ]</h5>
+        <h5>Question 12  [ <a style="color: #CB4335">Painting</a> ]</h5>
+        <h5>Question 13  [ <a style="color: #CB4335">Kanye West is an artist</a> ]</h5>
+        <h5>Question 14  [ <a style="color: #CB4335">Francisco Goya</a> ]</h5>
+        <h5>Question 15  [ <a style="color: #CB4335">Pablo Picasso</a> ]</h5>
+        </div>
+</div>
+
+</ion-content>
